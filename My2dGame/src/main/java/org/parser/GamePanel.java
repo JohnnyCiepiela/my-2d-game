@@ -30,7 +30,27 @@ public class GamePanel extends JPanel implements Runnable {
     @Override
     public void run() {
 
-        //tbc game loop here
+        while(gameThread != null) {
+            //In game loop:
+            //1.UPDATE - We update information such as character position
+            update();
 
+            //2.DRAW - We draw screen with the updated information
+            repaint();
+
+            //If FPS is 30, the program updates and draws 30 times per second
+        }
     }
+
+    public void update() {}
+
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        Graphics2D g2 = (Graphics2D)g;
+        g2.setColor(Color.white);
+        g2.fillRect(100,100,tileSize,tileSize);
+        g2.dispose();
+    }
+
 }
