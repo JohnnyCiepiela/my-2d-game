@@ -9,8 +9,6 @@ public class Main {
         window.setResizable(false);
         window.setTitle("My shitty game");
 
-        System.out.println("Testing");
-
         GamePanel gamePanel = new GamePanel();
         window.add(gamePanel);
         window.pack();
