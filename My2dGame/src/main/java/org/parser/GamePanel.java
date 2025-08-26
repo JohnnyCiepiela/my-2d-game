@@ -3,12 +3,14 @@ package org.parser;
 import java.awt.*;
 import javax.swing.*;
 
+import entity.Player;
+
 public class GamePanel extends JPanel implements Runnable {
 
     //SCREEN SETTINGS
     final int originalTileSize = 16; // 16x16
     final int scale = 3;
-    final int tileSize = originalTileSize * scale; // 48x48
+    public final int tileSize = originalTileSize * scale; // 48x48
     final int maxScreenCol = 30; //vertically
     final int maxScreenRow = 26; //horizontally
     final int screenWidth = tileSize * maxScreenCol;
@@ -19,6 +21,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     KeyHandler keyHandler = new KeyHandler();
     Thread gameThread;
+    Player player = new Player(this, keyHandler);
+
 
     //Set player's default position
     int playerX = 100;
@@ -70,26 +74,15 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void update() {
-        if(keyHandler.upPressed) {
-            playerY -= playerSpeed;
-        }
-        else if(keyHandler.downPressed) {
-            playerY += playerSpeed;
-        }
-        else if(keyHandler.leftPressed) {
-            playerX -= playerSpeed;
-        }
-        else if(keyHandler.rightPressed) {
-            playerX += playerSpeed;
-        }
+        player.update();
     }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
         Graphics2D g2 = (Graphics2D)g;
-        g2.setColor(Color.white);
-        g2.fillRect(playerX,playerY,tileSize,tileSize);
+        player.draw(g2);
+
         g2.dispose();
     }
 
