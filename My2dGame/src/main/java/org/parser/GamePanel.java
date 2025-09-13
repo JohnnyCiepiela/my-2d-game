@@ -7,7 +7,6 @@ import entity.Player;
 import tile.TileManager;
 
 public class GamePanel extends JPanel implements Runnable {
-
     //SCREEN SETTINGS
     final int originalTileSize = 16; // 16x16
     final int scale = 3;
@@ -19,7 +18,6 @@ public class GamePanel extends JPanel implements Runnable {
 
     //FPS
     int FPS = 60;
-
 
     TileManager tileManager = new TileManager(this);
     KeyHandler keyHandler = new KeyHandler();
@@ -83,5 +81,4 @@ public class GamePanel extends JPanel implements Runnable {
 
         g2.dispose();
     }
-
 }

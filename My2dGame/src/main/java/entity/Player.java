@@ -30,7 +30,6 @@ public class Player extends Entity{
 
     public void getPlayerImage() {
         try {
-
             up1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/ghost_back.png"));
             up2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/ghost_back2.png"));
             down1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/ghost_front.png"));
@@ -39,7 +38,6 @@ public class Player extends Entity{
             left2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/ghost_left2.png"));
             right1 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/ghost_right.png"));
             right2 = ImageIO.read(getClass().getClassLoader().getResourceAsStream("player/ghost_right2.png"));
-
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -47,7 +45,6 @@ public class Player extends Entity{
     }
 
     public void update() {
-
         if(keyHandler.upPressed || keyHandler.downPressed
             || keyHandler.leftPressed || keyHandler.rightPressed) {
 
@@ -83,7 +80,6 @@ public class Player extends Entity{
     }
 
     public void draw(Graphics2D g2) {
-
         BufferedImage image = null;
         switch(direction) {
             case "up":
@@ -119,7 +115,6 @@ public class Player extends Entity{
                 }
                 break;
         }
-
         g2.drawImage(image, x, y, gp.tileSize, gp.tileSize, null);
     }
 }

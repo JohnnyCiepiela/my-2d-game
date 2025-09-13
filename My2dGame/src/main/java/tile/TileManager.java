@@ -14,7 +14,7 @@ public class TileManager {
 
     GamePanel gamePanel;
     Tile[] tile;
-    int mapTileNum[][];
+    int[][] mapTileNum;
 
     public TileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -26,7 +26,6 @@ public class TileManager {
     }
 
     public void getTileImage() {
-
         try {
             tile[0] = new Tile();
             tile[0].image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("tiles/grass01.png"));
@@ -37,14 +36,12 @@ public class TileManager {
             tile[2] = new Tile();
             tile[2].image = ImageIO.read(getClass().getClassLoader().getResourceAsStream("tiles/water00.png"));
 
-
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void loadMap(String filePath) {
-
         try {
             InputStream is = getClass().getClassLoader().getResourceAsStream(filePath);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
@@ -66,18 +63,12 @@ public class TileManager {
                     row++;
                 }
             }
-
             br.close();
         }
         catch (Exception e) {}
-
     }
 
     public void draw(Graphics2D g2) {
-//        g2.drawImage(tile[0].image, 0, 0, gamePanel.tileSize, gamePanel.tileSize, null);
-//        g2.drawImage(tile[1].image, 48, 0, gamePanel.tileSize, gamePanel.tileSize, null);
-//        g2.drawImage(tile[2].image, 96, 0, gamePanel.tileSize, gamePanel.tileSize, null);
-
         int col = 0;
         int row = 0;
         int x = 0;
